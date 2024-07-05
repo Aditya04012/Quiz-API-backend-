@@ -1,0 +1,45 @@
+       Routes and functionality
+
+       1)Authentication Route("AuthRoute")
+
+       •purpose--> handle user login and registration
+       •EndPoints:
+            •`POST /`-->register user by caliing `registerUser` from `Authcontrollers`
+            •`POST /login`-->login user and given jwt token by calling `loginUser` from `Authcontrollers`
+
+      2)User Route ("userRoute")
+       
+       •purpose-->manage user data ,like updating and retriving
+       •EndPoints:
+           •`GET /:userId`-->Gives user's information.It require user to be Authenticated
+           (`isAuthenticated` middleware)
+
+           •`PATCH /:userId`-->Update user's information.It require user to be Authenticated
+      
+      3)Quiz router("quizRouter")
+       
+       •purpose-->handle create ,update,retriving,delete ,publishing the quiz
+       •EndPoints:
+           •`POST /` -->Create a new quiz and user must be Authenticated.
+           •`GET /:quizId` -->retriving quiz information with the help of `quizId`.User must be Authenticated.
+           •`DELETE /:quizId` -->delete quiz with the help of `quizId`.User must be Authenticated.
+           •`PUT /` -->Used to update unpublished quiz.The User must be Authenticated.
+           •`PATCH /`-->Publish the quiz or schedule the quiz so user can attempt it in future.The User must be Authenticated.
+
+      4)Exam Route("examRoute")
+        
+       •purpose-->handle process of startExam/quiz and submitExam and getResult of quiz/exam.
+       •EndPoints:
+          •`GET /:quizId`--> Is used to start the exam or attempt the exam.The User must be Authenticated.
+          •`POST /` -->Is used to submit the exam .
+          •'GET /result/:userId '-->Is used to display exam/quiz result based on `userId`.The user must be authenticated.
+   
+
+
+
+        MIDDLEWARE
+        • `isAuthenticated` Middleware
+        •Purpose and use-->Ensure that routes requiring authentication are protected && Applied to routes that should only be accessible by authenticated users.
+
+
+       
